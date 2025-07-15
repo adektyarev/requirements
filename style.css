@@ -1,0 +1,297 @@
+/* Civ6-style Color Palette */
+:root {
+    --civ-gold: #d4af37;
+    --civ-dark-gold: #b8941f;
+    --civ-blue: #1e3a8a;
+    --civ-dark-blue: #1e293b;
+    --civ-green: #16a34a;
+    --civ-red: #dc2626;
+    --civ-brown: #8b4513;
+    --civ-cream: #faf5e4;
+    --civ-shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    overflow: hidden;
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+/* Civ6-style Popup */
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: linear-gradient(135deg, var(--civ-cream), #f8f4e6);
+    border: 4px solid var(--civ-gold);
+    border-radius: 15px;
+    box-shadow: 0 0 30px var(--civ-shadow), inset 0 0 20px rgba(212, 175, 55, 0.1);
+    z-index: 1000;
+    font-weight: bold;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.popup.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+.popup-header {
+    background: linear-gradient(135deg, var(--civ-gold), var(--civ-dark-gold));
+    padding: 15px 20px;
+    border-bottom: 2px solid var(--civ-dark-gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h3 {
+    color: var(--civ-dark-blue);
+    font-size: 1.3em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin: 0;
+}
+
+.popup-close {
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: var(--civ-dark-blue);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.popup-close:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.popup-content {
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.property-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--civ-gold);
+    border: 3px solid var(--civ-dark-gold);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.property-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.property-info {
+    flex: 1;
+}
+
+.property-info p {
+    color: var(--civ-dark-blue);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.forecast {
+    background: rgba(212, 175, 55, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--civ-gold);
+    margin-bottom: 15px;
+}
+
+.forecast-label {
+    color: var(--civ-dark-blue);
+    font-weight: bold;
+}
+
+.forecast-value {
+    color: var(--civ-green);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.visit-button {
+    background: linear-gradient(135deg, var(--civ-blue), var(--civ-dark-blue));
+    color: white;
+    border: 2px solid var(--civ-gold);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.visit-button:hover {
+    background: linear-gradient(135deg, var(--civ-dark-blue), var(--civ-blue));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px var(--civ-shadow);
+}
+
+/* UI Overlay */
+.ui-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 500;
+    pointer-events: none;
+}
+
+.info-panel, .legend {
+    background: linear-gradient(135deg, var(--civ-cream), #f8f4e6);
+    border: 3px solid var(--civ-gold);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px var(--civ-shadow);
+    pointer-events: auto;
+}
+
+.info-panel h2 {
+    color: var(--civ-dark-blue);
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.info-panel p {
+    color: var(--civ-brown);
+    font-weight: bold;
+}
+
+.legend h4 {
+    color: var(--civ-dark-blue);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--civ-gold);
+    padding-bottom: 5px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.hex-sample {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--civ-gold);
+    border-radius: 3px;
+}
+
+.hex-sample.residential {
+    background: var(--civ-green);
+}
+
+.hex-sample.commercial {
+    background: var(--civ-blue);
+}
+
+.legend-item span {
+    color: var(--civ-dark-blue);
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Custom Mapbox Controls */
+.mapboxgl-ctrl-group {
+    border: 2px solid var(--civ-gold) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.mapboxgl-ctrl button {
+    background: var(--civ-cream) !important;
+    border-bottom: 1px solid var(--civ-gold) !important;
+}
+
+.mapboxgl-ctrl button:hover {
+    background: var(--civ-gold) !important;
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.popup.show {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .popup {
+        width: 90vw;
+        max-width: 350px;
+    }
+    
+    .ui-overlay {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+    }
+    
+    .info-panel, .legend {
+        padding: 10px;
+    }
+    
+    .popup-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .property-icon {
+        align-self: center;
+    }
+}
+
+/* Custom marker styles for 3D models */
+.marker {
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="12" fill="%23d4af37" stroke="%23b8941f" stroke-width="3"/><circle cx="15" cy="15" r="6" fill="%231e3a8a"/></svg>');
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.marker:hover {
+    transform: scale(1.2);
+}

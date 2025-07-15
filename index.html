@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calgary Houses - Civ6 Style Map</title>
+    
+    <!-- Mapbox GL JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    
+    <!-- Deck.gl for hexagon overlay -->
+    <script src="https://unpkg.com/deck.gl@latest/dist.min.js"></script>
+    
+    <!-- H3 for hexagonal grid -->
+    <script src="https://unpkg.com/h3-js@4.1.0/dist/h3-js.umd.js"></script>
+    
+    <!-- Three.js for GLTF loading -->
+    <script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.155.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="map"></div>
+    
+    <!-- Civ6-style popup overlay -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-header">
+            <h3 id="popup-title">Property Details</h3>
+            <button id="popup-close" class="popup-close">&times;</button>
+        </div>
+        <div class="popup-content">
+            <div class="property-icon">
+                <img id="popup-icon" src="" alt="Property Type">
+            </div>
+            <div class="property-info">
+                <p id="popup-description"></p>
+                <div class="forecast">
+                    <span class="forecast-label">Forecast:</span>
+                    <span id="popup-forecast" class="forecast-value"></span>
+                </div>
+                <button id="popup-visit" class="visit-button">Visit Site</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game-style UI overlay -->
+    <div class="ui-overlay">
+        <div class="info-panel">
+            <h2>Calgary Real Estate</h2>
+            <p>Explore properties in Civilization style</p>
+        </div>
+        <div class="legend">
+            <h4>Legend</h4>
+            <div class="legend-item">
+                <div class="hex-sample residential"></div>
+                <span>Residential Zone</span>
+            </div>
+            <div class="legend-item">
+                <div class="hex-sample commercial"></div>
+                <span>Commercial Zone</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
