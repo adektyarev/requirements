@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Hex Map with Civ6 UI - Standalone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="scene-container"></div>
+        
+        <!-- Civ6 Style Popup (hidden by default) -->
+        <div id="popup" class="civ6-popup hidden">
+            <div class="popup-header">
+                <div class="popup-title-section">
+                    <div class="building-icon" id="popup-icon">🏠</div>
+                    <div class="title-text">
+                        <h2 class="popup-title" id="popup-title">Starling</h2>
+                        <p class="popup-subtitle" id="popup-subtitle">Mid-Front-Garage Homes</p>
+                    </div>
+                </div>
+                <button class="close-button" id="close-button">×</button>
+            </div>
+
+            <div class="popup-content">
+                <div class="description-section">
+                    <p class="description" id="popup-description">Eco-friendly design, amphitheatre, trails, pump-track...</p>
+                </div>
+
+                <div class="forecast-section">
+                    <div class="forecast-label">Price Forecast</div>
+                    <div class="forecast-value" id="popup-forecast">+15% in 3 years</div>
+                </div>
+
+                <div class="amenities-section">
+                    <div class="amenities-label">Amenities</div>
+                    <div class="amenities-list" id="popup-amenities">
+                        <div class="amenity-item">
+                            <span class="amenity-bullet">•</span>
+                            Eco-friendly design
+                        </div>
+                        <div class="amenity-item">
+                            <span class="amenity-bullet">•</span>
+                            Amphitheatre
+                        </div>
+                    </div>
+                </div>
+
+                <div class="popup-footer">
+                    <button class="visit-site-button">Visit Site</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading indicator -->
+        <div id="loading" class="loading">
+            <div class="loading-text">Loading 3D Map...</div>
+        </div>
+
+        <!-- Controls info -->
+        <div id="controls-info" class="controls-info">
+            <h3>🎮 Controls</h3>
+            <p>🖱️ Left drag: Rotate camera</p>
+            <p>🖱️ Right drag: Pan view</p>
+            <p>🔄 Mouse wheel: Zoom in/out</p>
+            <p>🎯 Click tiles: View information</p>
+        </div>
+    </div>
+
+    <!-- Three.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r158/three.min.js"></script>
+    <!-- OrbitControls from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Our main JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
